@@ -1117,6 +1117,9 @@ static_face_draw_end:
 step_counter_draw: ;draw step counter
 	PUSH {r4-r12,lr}	; Spill registers to stack
 
+	LDR r0, ptr_to_blackPrefix
+	BL output_string
+
 	LDR r0, ptr_to_scoreValue
 	LDRH r1, [r0]
 	LDR r0, ptr_to_scoreStringValue
@@ -1216,107 +1219,107 @@ draw_3x3_block_end:
 	POP {r4-r12,lr}
 	MOV pc, lr
 
-draw_3x2_block:		; take r0 color draw a block r1 for current location
-	PUSH {r4-r12,lr}	; Spill registers to stack
+;draw_3x2_block:		; take r0 color draw a block r1 for current location
+;	PUSH {r4-r12,lr}	; Spill registers to stack
 
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorleft6
-	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorleft6
+;	BL output_string
+;
+;	LDR r0, ptr_to_cursordown
+;	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;
+;	LDR r0, ptr_to_cursorup
+;	BL output_string
+;
+;	POP {r4-r12,lr}
+;	MOV pc, lr
 
-	LDR r0, ptr_to_cursordown
-	BL output_string
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
+;draw_3x1_block:		; take r0 color draw a block r1 for current location
+;	PUSH {r4-r12,lr}	; Spill registers to stack
+;
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;
+;
+;	POP {r4-r12,lr}
+;	MOV pc, lr
 
-	LDR r0, ptr_to_cursorup
-	BL output_string
+;draw_2x3_block:		; take r0 color draw a block r1 for current location
+;	PUSH {r4-r12,lr}	; Spill registers to stack
 
-	POP {r4-r12,lr}
-	MOV pc, lr
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorleft4
+;	BL output_string
 
-draw_3x1_block:		; take r0 color draw a block r1 for current location
-	PUSH {r4-r12,lr}	; Spill registers to stack
-
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-
-
-	POP {r4-r12,lr}
-	MOV pc, lr
-
-draw_2x3_block:		; take r0 color draw a block r1 for current location
-	PUSH {r4-r12,lr}	; Spill registers to stack
-
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorleft4
-	BL output_string
-
-	LDR r0, ptr_to_cursordown
-	BL output_string
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorleft4
-	BL output_string
-
-	LDR r0, ptr_to_cursordown
-	BL output_string
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorup
-	BL output_string
-	BL output_string
-
-
-	POP {r4-r12,lr}
-	MOV pc, lr
-
-draw_1x3_block:		; take r0 color draw a block r1 for current location
-	PUSH {r4-r12,lr}	; Spill registers to stack
-
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorleft2
-	BL output_string
-
-	LDR r0, ptr_to_cursordown
-	BL output_string
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorleft2
-	BL output_string
-
-	LDR r0, ptr_to_cursordown
-	BL output_string
-	LDR r0, ptr_to_squire
-	BL output_string
-	BL output_string
-	BL output_string
-	LDR r0, ptr_to_cursorup
-	BL output_string
-	BL output_string
+;	LDR r0, ptr_to_cursordown
+;	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorleft4
+;	BL output_string
+;
+;	LDR r0, ptr_to_cursordown
+;	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorup
+;	BL output_string
+;	BL output_string
 
 
+;	POP {r4-r12,lr}
+;	MOV pc, lr
 
-	POP {r4-r12,lr}
-	MOV pc, lr
+;draw_1x3_block:		; take r0 color draw a block r1 for current location
+;	PUSH {r4-r12,lr}	; Spill registers to stack
+
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorleft2
+;	BL output_string
+;
+;	LDR r0, ptr_to_cursordown
+;	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorleft2
+;	BL output_string
+
+;	LDR r0, ptr_to_cursordown
+;	BL output_string
+;	LDR r0, ptr_to_squire
+;	BL output_string
+;	BL output_string
+;	BL output_string
+;	LDR r0, ptr_to_cursorup
+;	BL output_string
+;	BL output_string
+
+
+
+;	POP {r4-r12,lr}
+;	MOV pc, lr
 
 draw_single_squire:		; take r0 color draw
 	PUSH {r4-r12,lr}	; Spill registers to stack
@@ -1822,8 +1825,6 @@ set_char_end:
 	MOVT r1, #0xE000
 	MOV r0, #0x0
 	STR r0, [r1, #0]
-	MOV r1, #0x0
-	MOV r3, #0x0
 
 	POP {r4-r12, lr}	; Restore registers to adhere to the AAPCS
 	MOV pc, lr
